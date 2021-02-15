@@ -43,8 +43,11 @@ namespace Player
 
         private void Turn()
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction),
-                turnSpeed * Time.deltaTime);
+            if (_direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_direction),
+                    turnSpeed * Time.deltaTime);
+            }
         }
 
         public void UpdateMovementDirection(Vector3 direction)
