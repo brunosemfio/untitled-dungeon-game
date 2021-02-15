@@ -3,7 +3,47 @@ guid: 7c94edf1f1246214ca78273a83253f11
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 6a026183f53968e439a20f96482ab9ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlueDark
+    second: {fileID: 2100000, guid: a5b63f55e0394cb40bc968e8bb587fc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BrownDark
+    second: {fileID: 2100000, guid: 9d1a46d615865bb4db188c6b813fcdca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: b4469621e35d00c46a61ae4cb5645515, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mud
+    second: {fileID: 2100000, guid: 81c8e7e9aa5da7245bb6e99445138cca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PinkLight
+    second: {fileID: 2100000, guid: ef16f133141856948981814a8548a35d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: 985b5a969790e694c84931c0895e9396, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodDark
+    second: {fileID: 2100000, guid: aba1f6ac468d55d4d9c42147f633a606, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
