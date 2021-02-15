@@ -15,6 +15,8 @@ namespace Player
 
         #region Private
 
+        private Camera _cam;
+
         private CharacterController _controller;
 
         private Vector3 _direction;
@@ -23,6 +25,8 @@ namespace Player
 
         private void Awake()
         {
+            _cam = Camera.main;
+
             _controller = GetComponent<CharacterController>();
         }
 
@@ -45,7 +49,15 @@ namespace Player
 
         public void UpdateMovementDirection(Vector3 direction)
         {
-            _direction = direction;
+            var t = _cam.transform;
+
+            var forward = t.forward;
+            var right = t.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+
+            _direction = forward * direction.z + right * direction.x;
         }
     }
 }
