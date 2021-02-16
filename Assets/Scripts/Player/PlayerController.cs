@@ -62,5 +62,10 @@ namespace Player
 
             _rawInput = new Vector3(input.x, 0f, input.y);
         }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed) _playerAnimation.AttackAnimation();
+        }
     }
 }
