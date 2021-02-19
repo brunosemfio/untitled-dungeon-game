@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
-    [RequireComponent(typeof(PlayerMovement))]
     [RequireComponent(typeof(PlayerAnimation))]
+    [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerCombat))]
     public class PlayerController : MonoBehaviour
     {
         #region Inspector
@@ -19,6 +20,8 @@ namespace Player
 
         private PlayerAnimation _playerAnimation;
 
+        private PlayerCombat _playerCombat;
+
         private Vector3 _rawInput;
 
         private Vector3 _smoothInput;
@@ -30,6 +33,8 @@ namespace Player
             _playerMovement = GetComponent<PlayerMovement>();
 
             _playerAnimation = GetComponent<PlayerAnimation>();
+            
+            _playerCombat = GetComponent<PlayerCombat>();
         }
 
         private void Update()
