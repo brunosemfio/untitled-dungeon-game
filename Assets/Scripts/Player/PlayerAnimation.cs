@@ -6,26 +6,20 @@ namespace Player
     public class PlayerAnimation : MonoBehaviour
     {
         #region Private
+        
+        private readonly int _speedHash = Animator.StringToHash("speed");
 
+        private readonly int _attackHash = Animator.StringToHash("attack");
+
+        private readonly int _stateTimeHash = Animator.StringToHash("stateTime");
+        
         private Animator _animator;
-
-        private int _speedHash;
-
-        private int _attackHash;
-
-        private int _stateTimeHash;
 
         #endregion
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-
-            _speedHash = Animator.StringToHash("speed");
-
-            _attackHash = Animator.StringToHash("attack");
-
-            _stateTimeHash = Animator.StringToHash("stateTime");
         }
 
         private void FixedUpdate()

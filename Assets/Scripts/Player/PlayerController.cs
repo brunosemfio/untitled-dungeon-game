@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapon;
 
 namespace Player
 {
     [RequireComponent(typeof(PlayerAnimation))]
     [RequireComponent(typeof(PlayerMovement))]
-    [RequireComponent(typeof(PlayerCombat))]
     public class PlayerController : MonoBehaviour
     {
         #region Inspector
@@ -20,11 +20,11 @@ namespace Player
 
         private PlayerAnimation _playerAnimation;
 
-        private PlayerCombat _playerCombat;
-
         private Vector3 _rawInput;
 
         private Vector3 _smoothInput;
+
+        private MeleeWeapon _weapon;
 
         #endregion
 
@@ -33,8 +33,6 @@ namespace Player
             _playerMovement = GetComponent<PlayerMovement>();
 
             _playerAnimation = GetComponent<PlayerAnimation>();
-            
-            _playerCombat = GetComponent<PlayerCombat>();
         }
 
         private void Update()
@@ -59,6 +57,25 @@ namespace Player
         private void UpdateMovementAnimation()
         {
             _playerAnimation.UpdateMovementAnimation(_smoothInput.magnitude);
+        }
+
+        public void SetWeapon(MeleeWeapon weapon)
+        {
+            _weapon = weapon;
+        }
+
+        public void MeleeAttackStart()
+        {
+            if (_weapon != null) _weapon.StartAttack();
+        }
+
+        public void MeleeAttackHit()
+        {
+            if (_weapon != null) _weapon.CheckCollision();
+        }
+
+        public void MeleeAttackAnd()
+        {
         }
 
         public void OnMove(InputAction.CallbackContext context)

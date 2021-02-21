@@ -1,18 +1,25 @@
-﻿using UnityEngine;
+﻿using Audio;
+using Damage;
+using Player;
+using UnityEngine;
 
-namespace Player
+namespace Weapon
 {
-    public class PlayerCombat : MonoBehaviour
+    public class MeleeWeapon : MonoBehaviour
     {
         #region Inspector
 
         [SerializeField] private int maxEnemies;
 
         [SerializeField] private float attackRadius;
-        
+
         [SerializeField] private Transform attackRoot;
 
         [SerializeField] private LayerMask enemyLayer;
+
+        [SerializeField] private RandomAudioPlayer attackAudio;
+
+        [SerializeField] private RandomAudioPlayer hitAudio;
 
         #endregion
 
@@ -25,15 +32,32 @@ namespace Player
         private void Awake()
         {
             _result = new Collider[maxEnemies];
+
+            Register();
         }
 
-        public void CheckAttackCollision()
+        private void Register()
+        {
+            GetComponentInParent<PlayerController>().SetWeapon(this);
+        }
+
+        public void StartAttack()
+        {
+            attackAudio.PlayRandomClip();
+        }
+
+        public void CheckCollision()
         {
             var num = Physics.OverlapSphereNonAlloc(attackRoot.position, attackRadius, _result, enemyLayer);
 
             for (var i = 0; i < num; i++)
             {
-                Debug.Log(_result[i]);
+                if (_result[i].TryGetComponent(out Damageable damageable))
+                {
+                    hitAudio.PlayRandomClip();
+                    
+                    damageable.ApplyDamage(1);
+                }
             }
         }
 
