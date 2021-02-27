@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f2356dc6834642af8d267a758a1766, type: 3}
+  m_Name: ArmRight
+  m_EditorClassIdentifier: 
+  title: 
+  index: 0
+  options:
+  - {fileID: 4276890872019706737, guid: aa3a316dabc5f884f8cece2aa31360de, type: 3}
+  - {fileID: 2706713565013767244, guid: d359513b87ce64145bd90fdfd3e98bf6, type: 3}
+  - {fileID: 2641674529741176566, guid: c7d9696a20c175142bf099bb76d7b778, type: 3}
+  - {fileID: 8072068715191941754, guid: d9fd43c4402b8f5468ea723a18b898fa, type: 3}

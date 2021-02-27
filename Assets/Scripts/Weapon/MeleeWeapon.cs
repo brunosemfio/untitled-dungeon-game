@@ -1,6 +1,6 @@
 ﻿using Audio;
+using Character.Player;
 using Damage;
-using Player;
 using UnityEngine;
 
 namespace Weapon
@@ -15,7 +15,7 @@ namespace Weapon
 
         [SerializeField] private Transform attackRoot;
 
-        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] private LayerMask targetLayer;
 
         [SerializeField] private RandomAudioPlayer attackAudio;
 
@@ -48,7 +48,7 @@ namespace Weapon
 
         public void CheckCollision()
         {
-            var num = Physics.OverlapSphereNonAlloc(attackRoot.position, attackRadius, _result, enemyLayer);
+            var num = Physics.OverlapSphereNonAlloc(attackRoot.position, attackRadius, _result, targetLayer);
 
             for (var i = 0; i < num; i++)
             {
