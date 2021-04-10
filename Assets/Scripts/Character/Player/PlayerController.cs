@@ -12,6 +12,8 @@ namespace Character.Player
 
         [SerializeField] private float smoothSpeed;
 
+        [SerializeField] private float attackMovementMultiplier = .75f;
+
         #endregion
 
         #region Private
@@ -20,11 +22,13 @@ namespace Character.Player
 
         private CharacterAnimation _characterAnimation;
 
-        private Vector3 _rawInput;
+        private Vector3 _rawMoveInput;
 
-        private Vector3 _smoothInput;
+        private Vector3 _smoothMoveInput;
 
         private MeleeWeapon _weapon;
+
+        private bool _attacking;
 
         #endregion
 
@@ -46,17 +50,19 @@ namespace Character.Player
 
         private void CalculateInputSmoothing()
         {
-            _smoothInput = Vector3.Lerp(_smoothInput, _rawInput, smoothSpeed * Time.deltaTime);
+            _smoothMoveInput = Vector3.Lerp(_smoothMoveInput, _rawMoveInput, smoothSpeed * Time.deltaTime);
+
+            if (_attacking) _smoothMoveInput *= attackMovementMultiplier;
         }
 
         private void UpdateMovementDirection()
         {
-            _playerMovement.UpdateMovementDirection(_smoothInput);
+            _playerMovement.UpdateMovementDirection(_smoothMoveInput);
         }
 
         private void UpdateMovementAnimation()
         {
-            _characterAnimation.UpdateMovementAnimation(_smoothInput.magnitude);
+            _characterAnimation.UpdateMovementAnimation(_smoothMoveInput.magnitude);
         }
 
         public void SetWeapon(MeleeWeapon weapon)
@@ -66,6 +72,8 @@ namespace Character.Player
 
         public void MeleeAttackStart()
         {
+            _attacking = true;
+
             if (_weapon != null) _weapon.StartAttack();
         }
 
@@ -74,15 +82,16 @@ namespace Character.Player
             if (_weapon != null) _weapon.CheckCollision();
         }
 
-        public void MeleeAttackAnd()
+        public void MeleeAttackEnd()
         {
+            _attacking = false;
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
             var input = context.ReadValue<Vector2>();
 
-            _rawInput = new Vector3(input.x, 0f, input.y);
+            _rawMoveInput = new Vector3(input.x, 0f, input.y);
         }
 
         public void OnAttack(InputAction.CallbackContext context)

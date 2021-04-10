@@ -18,7 +18,7 @@ namespace Customize
 
         #region Event
 
-        public event UnityAction<GameObject> ChangeEvent = delegate { };
+        public event UnityAction<GameObject> Change = delegate { };
 
         #endregion
 
@@ -31,19 +31,19 @@ namespace Customize
         {
             if (++index >= options.Length) index = 0;
 
-            Change();
+            Notify();
         }
 
         public void Prev()
         {
             if (--index < 0) index = options.Length - 1;
 
-            Change();
+            Notify();
         }
 
-        private void Change()
+        private void Notify()
         {
-            if (options.Length > 0) ChangeEvent(options[index]);
+            if (options.Length > 0) Change(options[index % options.Length]);
         }
     }
 }

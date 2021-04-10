@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Head
   m_EditorClassIdentifier: 
   title: 
-  index: 0
+  index: 1
   options:
   - {fileID: 2662930166979979582, guid: fd2a3dc53e2000c459af81542d40666b, type: 3}
   - {fileID: 2120482892255734470, guid: 5bfa865d91cbbe843bfcf71312db5651, type: 3}

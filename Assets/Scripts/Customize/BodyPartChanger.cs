@@ -13,15 +13,15 @@ namespace Customize
 
         private void OnEnable()
         {
-            bodyPart.ChangeEvent += ChangeEvent;
+            bodyPart.Change += OnChange;
         }
 
         private void OnDisable()
         {
-            bodyPart.ChangeEvent -= ChangeEvent;
+            bodyPart.Change -= OnChange;
         }
 
-        private void ChangeEvent(GameObject obj)
+        private void OnChange(GameObject obj)
         {
             foreach (Transform child in transform)
             {
