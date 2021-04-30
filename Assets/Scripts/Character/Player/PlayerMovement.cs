@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Character.Player
 {
@@ -40,7 +41,7 @@ namespace Character.Player
         {
             _controller.SimpleMove(_direction * moveSpeed);
         }
-
+        
         private void Turn()
         {
             if (_direction != Vector3.zero)
